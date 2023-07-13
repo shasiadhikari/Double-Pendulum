@@ -689,16 +689,14 @@ taken into account and Total Energy vs Time and change in Energy vs time graph i
 
 ### 6.1 Forward Euler Method
 
-In forward Euler, simulation with step size _h_ = 0_._ 01 and 0_._ 001 didn’t converge and the simu-
-lation failed in between. Thus only _h_ = 0_._ 0001 and 0_._ 00001 has an output. The trajectories
+In forward Euler, simulation with step size $h = 0.01 and 0.001 didn’t converge and the simulation failed in between. Thus only _h_ = 0_._ 0001 and 0_._ 00001 has an output. The trajectories
 for the same are shown below
 
 <img src="./Images/eulerplot/0.0001/Total_Energy_Forwardr0.0001.png" width="200" height="200">
 <img src="./Images/eulerplot/0.0001/Delta_Energy_Forward0.0001.png" width="200" height="200">
 <img src="./Images/eulerplot/0.0001/final_frame_Forward0.0001.png" width="200" height="200">
 
-Figure 2: Results of forward Euler method with h= 0.0001 (total en-
-ergy(left),error(middle),and trajectory(right))\
+Figure 2: Results of forward Euler method with h= 0.0001 (total energy(left),error(middle),and trajectory(right))\
 <img src="./Images/eulerplot/0.00001/Total_Energy_Forwardr0.00001.png" width="200" height="200">
 <img src="./Images/eulerplot/0.00001/Delta_Energy_Forward0.00001.png" width="200" height="200">
 <img src="./Images/eulerplot/0.00001/final_frame_Forward0.00001.png" width="200" height="200">\
