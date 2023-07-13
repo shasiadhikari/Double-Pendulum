@@ -739,7 +739,9 @@ much higher than that of the lower step size.
 ### 6.3 Runge-Kutta method
 
 The previous numerical solver was able to solve the system with an error of less than 106. However, the classical Runge-kutta method is a relatively faster and more advanced numerical solving method with the local error of $O( h^5 )$. Therefore, we simulated the system with a similar step size, and the results are shown below.\
-<img src="./Images/rk4plot/0.01/Total_Energy_RKr0.01.png" width = 200 height = 200 > <img src="./Images/rk4plot/0.01/Delta_Energy_RK0.01.png" width = 200 height = 200> <img src="./Images/rk4plot/0.01/final_frame_RK0.01.png" width = 200 height = 200> 
+<img src="./Images/rk4plot/0.01/Total_Energy_RKr0.01.png" width = 200 height = 200 >
+<img src="./Images/rk4plot/0.01/Delta_Energy_RK0.01.png" width = 200 height = 200>
+<img src="./Images/rk4plot/0.01/final_frame_RK0.01.png" width = 200 height = 200> 
 
 Figure 8: Results of RK4 with h= 0.01 (total energy(left),error(middle),and trajectory(right))\
 <img src="./Images/rk4plot/0.001/Total_Energy_RKr0.001.png" width = 200 height = 200 > <img src="./Images/rk4plot/0.001/Delta_Energy_RK0.001.png" width = 200 height = 200> <img src="./Images/rk4plot/0.001/final_frame_RK0.001.png" width = 200 height = 200> 
