@@ -690,16 +690,12 @@ taken into account and Total Energy vs Time and change in Energy vs time graph i
 ### 6.1 Forward Euler Method
 
 In forward Euler, simulation with step size $h = 0.01 and 0.001 didn’t converge and the simulation failed in between. Thus only _h_ = 0_._ 0001 and 0_._ 00001 has an output. The trajectories
-for the same are shown below
-
-<img src="./Images/eulerplot/0.0001/Total_Energy_Forwardr0.0001.png" width="200" height="200">
-<img src="./Images/eulerplot/0.0001/Delta_Energy_Forward0.0001.png" width="200" height="200">
-<img src="./Images/eulerplot/0.0001/final_frame_Forward0.0001.png" width="200" height="200">
+for the same are shown below\
+<img src="./Images/eulerplot/0.0001/Total_Energy_Forwardr0.0001.png" width="200" height="200"> <img src="./Images/eulerplot/0.0001/Delta_Energy_Forward0.0001.png" width="200" height="200"> <img src="./Images/eulerplot/0.0001/final_frame_Forward0.0001.png" width="200" height="200">
 
 Figure 2: Results of forward Euler method with h= 0.0001 (total energy(left),error(middle),and trajectory(right))\
-<img src="./Images/eulerplot/0.00001/Total_Energy_Forwardr0.00001.png" width="200" height="200">
-<img src="./Images/eulerplot/0.00001/Delta_Energy_Forward0.00001.png" width="200" height="200">
-<img src="./Images/eulerplot/0.00001/final_frame_Forward0.00001.png" width="200" height="200">\
+<img src="./Images/eulerplot/0.00001/Total_Energy_Forwardr0.00001.png" width="200" height="200"> <img src="./Images/eulerplot/0.00001/Delta_Energy_Forward0.00001.png" width="200" height="200"> <img src="./Images/eulerplot/0.00001/final_frame_Forward0.00001.png" width="200" height="200">
+
 Figure 3: Results of forward Euler method with h= 0.00001 (total en-
 ergy(left),error(middle),and trajectory(right))
 
@@ -718,45 +714,33 @@ solve the system efficiently.
 The Predictor-Corrector Method with _O_ ( _h_^3 )is also an explicit method. Moreover, it is ex-
 pected to converge with the smaller step size. Therefore, the system is simulated with step
 size h = 0.01, 0.001, 0.0001, and 0.00001 and are illustrated below.\
-<img src="./Images/predictorplot/0.01/Total_Energy_Predictor0.01.png" width = 200 height = 200 >
-<img src="./Images/predictorplot/0.01/Delta_Energy_Predictor0.01.png" width = 200 height = 200>
-<img src="./Images/predictorplot/0.01/final_frame_jPredictor0.01.png" width = 200 height = 200> 
+<img src="./Images/predictorplot/0.01/Total_Energy_Predictor0.01.png" width = 200 height = 200 > <img src="./Images/predictorplot/0.01/Delta_Energy_Predictor0.01.png" width = 200 height = 200> <img src="./Images/predictorplot/0.01/final_frame_jPredictor0.01.png" width = 200 height = 200> 
 
 Figure 4: Results of Predictor-Corrector with h= 0.01 (total energy(left),error(middle),and
-trajectory(right))
-<img src="./Images/predictorplot/0.001/Total_Energy_Predictor0.001.png" width = 200 height = 200 >
-<img src="./Images/predictorplot/0.001/Delta_Energy_Predictor0.001.png" width = 200 height = 200>
-<img src="./Images/predictorplot/0.001/final_frame_jPredictor0.001.png" width = 200 height = 200> 
+trajectory(right))\
+<img src="./Images/predictorplot/0.001/Total_Energy_Predictor0.001.png" width = 200 height = 200> <img src="./Images/predictorplot/0.001/Delta_Energy_Predictor0.001.png" width = 200 height = 200> <img src="./Images/predictorplot/0.001/final_frame_jPredictor0.001.png" width = 200 height = 200> 
 
- 
 Figure 5: Results of Predictor-Corrector with h= 0.001 (total energy(left),error(middle),and trajectory(right))\
-
-<img src="./Images/predictorplot/0.0001/Total_Energy_Predictor0.0001.png" width ="200" height = "200">
-<img src="./Images/predictorplot/0.0001/Delta_Energy_Predictor0.0001.png" width = "200" height = "200">
-<img src="./Images/predictorplot/0.0001/final_frame_jPredictor0.0001.png" width = "200" height= "200">
-
+<img src="./Images/predictorplot/0.0001/Total_Energy_Predictor0.0001.png" width ="200" height = "200"> <img src="./Images/predictorplot/0.0001/Delta_Energy_Predictor0.0001.png" width = "200" height = "200"> <img src="./Images/predictorplot/0.0001/final_frame_jPredictor0.0001.png" width = "200" height= "200">
 
 Figure 6: Results of Predictor-Corrector with h= 0.0001 (total energy(left),error(middle),and
-trajectory(right))
-
-<img src="./Images/predictorplot/0.00001/Total_Energy_Predictor0.00001.png" width = 200 height = 200 >
-<img src="./Images/predictorplot/0.00001/Delta_Energy_Predictor0.00001.png" width = 200 height = 200>
-<img src="./Images/predictorplot/0.00001/final_frame_jpredictorr0.00001.png" width = 200 height = 200> 
+trajectory(right))\
+<img src="./Images/predictorplot/0.00001/Total_Energy_Predictor0.00001.png" width = 200 height = 200 > <img src="./Images/predictorplot/0.00001/Delta_Energy_Predictor0.00001.png" width = 200 height = 200> <img src="./Images/predictorplot/0.00001/final_frame_jpredictorr0.00001.png" width = 200 height = 200> 
 
 Figure 7: Results of Predictor-Corrector with h= 0.00001 (total energy(left),error(middle),and
 trajectory(right))
 
 The above figure describes the simulation result with the Predictor-Corrector Method. In
-Figure4,5,6 and 7, it is clear that the trajectory for _h_ = 0_._ 001 _,_ 0_._ 001 and 0_._ 00001 are same.
-As expected the error is decreasing as step size _h_ reduces. The error is reducing from a scale
-of 10 −^1 in Figure4 to a scale of 10 −^7 in Figure 7. The computational time for _h_ = 0_._ 00001 is
+Figure4,5,6 and 7, it is clear that the trajectory for $h=0.001,0.001 and 0.00001$ are same.
+As expected the error is decreasing as step size $h$ reduces. The error is reducing from a scale
+of $10^-1$ in Figure4 to a scale of $10^-7$ in Figure 7. The computational time for $h= 0.00001$ is
 much higher than that of the lower step size.
 
 ### 6.3 Runge-Kutta method
 
 The previous numerical solver was able to solve the system with an error of less than 106.
 However, the classical Runge-kutta method is a relatively faster and more advanced numerical
-solving method with the local error of _O_ ( _h_^5 ). Therefore, we simulated the system with a
+solving method with the local error of $O( h^5 )$. Therefore, we simulated the system with a
 similar step size, and the results are shown below.\
 <img src="./Images/rk4plot/0.01/Total_Energy_RKr0.01.png" width = 200 height = 200 >
 <img src="./Images/rk4plot/0.01/Delta_Energy_RK0.01.png" width = 200 height = 200>
