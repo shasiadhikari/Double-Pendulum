@@ -1,19 +1,18 @@
 ![](./Images/hsrw-logo-transparent.png)
 ### Faculty of Technology and Bionics
 
-Numerical Methods of Simulations
+## Numerical Methods of Simulations
 
-### winter term 2022/
-
-**Project Report**
+### winter term 2022/23
+### Project Report
 
 ## Numerical Solution of double pendulum with one
 
 ## member as spring using Lagrangian Mechanics
 
-## Akhil Binoy : 31003
+### Akhil Binoy : 31003
 
-## Shasi Adhikari: 20794
+### Shasi Adhikari: 20794
 
 ### 28 th February, 2023
 
@@ -50,7 +49,7 @@ Numerical Methods of Simulations
 
 ## List of Figures
 
-```
+
 1 Coordinate System................................. 4
 2 Results of forward Euler method with h= 0.0001 (total energy(left),error(middle),and
 trajectory(right)).................................. 14
@@ -71,8 +70,8 @@ tory(right))..................................... 18
 11 Results of RK4 with h= 0.0001 (total energy(left),error(middle),and trajec-
 tory(right))..................................... 18
 12 Maximum absolute difference against the exact solution of different solver... 19
-```
-##### 2
+
+
 
 
 ## 1 List of variables
@@ -117,7 +116,6 @@ tory(right))..................................... 18
 - _yCi_ +1: Corrected solution of next step
 - _k_ 1 _,k_ 2 _,k_ 3 _,k_ 4 : Four estimates of Runge Kutta Method
 
-##### 3
 
 
 ## 2 Introduction
@@ -150,10 +148,10 @@ of the second member. _m_ 1 and _m_ 2 are the masses attached to pendulum 1 and 
 respectively, which makes an angle _θ_ 1 and _θ_ 2 with the x-axis.
 The degree of freedom of the system as 3 that is, _θ_ 1 , _r_ 1 and _θ_ 2
 
-```
+![](./Images/coordinatesystem.jpg)
 Figure 1: Coordinate System
-```
-##### 4
+
+
 
 
 ## 4 Methodology
@@ -171,182 +169,89 @@ Kutta(RK4) method.
 Lagrangian mechanics [3] is based on the principle of least action integral of the system, which
 is related to the difference between the kinetic and potential energies of the system. The
 generalized Lagrange equation :
-_∂L
-∂qi_
+$$
+\begin{align}
+   \tag{1}
+   \frac{∂L}{∂qi}-\frac{d}{dt}(\frac{∂L}{∂\dot{q}i})=0
+\end{align}
+$$
 
-##### −
-
-```
-d
-dt
-```
-```
-(
-∂L
-∂q ̇ i
-```
-```
-)
-= 0 (1)
-```
 where L is the Lagrangian of the system can be written as the difference between the
 kinetic energy T and potential energy V[1]:
-
-##### L = T − V (2)
+$$
+\begin{align}
+\tag{2}
+L=T-V
+\end{align}
+$$
 
 Let x-y be the coordinate system with the origin coinciding with the suspension point of
 Pendulum 1(with the spring), and then the coordinates of the pendulum are defined by :
+$$
+\begin{align}
+\tag{3}
+x_1 = (l_1+r_1)cos(θ_1) ; y_1 = -(l_1+r_1)sin(θ_1)
+\end{align}
+$$
 
-```
-x 1 = ( l 1 + r 1 ) cos ( θ 1 ) ; y 1 =−( l 1 + r 1 ) sin ( θ 1 ) (3)
-```
-```
-x 2 = x 1 + l 2 cos ( θ 2 ) ; y 2 = y 1 − l 2 sin ( θ 2 ) (4)
+$$
+\begin{align}
+\tag{4}
+x_2 = x_1+l_2cos(θ_2) ; y_2 = -y_1-l_2sin(θ_2)
+\end{align}
+$$
+
 The kinetic energy of the system :
-```
-##### T =
 
-##### 1
+$$
+\begin{align}
+\tag{5}
+L=\frac{1}{2}m_1(\dot{x_1}^2+\dot{y_1}^2)+\frac{1}{2}m_2(\dot{x_2}^2+\dot{y_2}^2)
+\end{align}
+$$
 
-##### 2
-
-```
-m 1 vl^21 +
-```
-##### 1
-
-##### 2
-
-```
-m 2 v^2 l 2 =
-```
-##### 1
-
-##### 2
-
-```
-m 1 ( ̇ x 12 + ̇ y 12 ) +
-```
-##### 1
-
-##### 2
-
-```
-m 2 ( ̇ x 22 + ̇ y 22 ) (5)
-```
-```
 The potential energy of the system :
-```
-```
-V = m 1 gy 1 + m 2 gy 2 +
-```
-##### 1
+$$
+\begin{align}
+\tag{6}
+V = m_1gy_1+m_2gy_2 * \frac{1}{2}kr_1^2
+\end{align}
+$$
 
-##### 2
 
-```
-kr^21 (6)
-```
-```
 Thus the Lagrangian of the system :
-```
-##### L =
+$$
+\begin{align}
+\tag{7}
+L=\frac{1}{2}m_1(\dot{x_1}^2+\dot{y_1}^2)+\frac{1}{2}m_2(\dot{x_2}^2+\dot{y_2}^2)-m_1gy_1-m_2gy_2-\frac{1}{2}kr_1^2
+\end{align}
+$$
 
-##### 1
 
-##### 2
-
-```
-m 1 ( ̇ x 12 + ̇ y 12 ) +
-```
-##### 1
-
-##### 2
-
-```
-m 2 ( ̇ x 22 + ̇ y 22 )− m 1 gy 1 − m 2 gy 2 −
-```
-##### 1
-
-##### 2
-
-```
-kr^21 (7)
-```
 In our system, there are three variables due to three degrees of freedom. Hence, there
 will be three Lagrange equations with respect to _θ_ 1 , _r_ 1 , and _θ_ 2 which are _LE_ 1 , _LE_ 2 , and _LE_ 3
 respectively. It is to be noted that the number of Lagrange equations of a system is always
 equal to the number of degrees of freedom.
 
-##### LE 1 =
+$$
+\begin{align}
+\tag{8}
+LE_1 = \frac{∂L}{∂θ_1}-\frac{d}{dt}(\frac{∂L}{∂\dot{θ}_1})=0
+\end{align}
+$$
+$$
+\begin{align}
+\tag{9}
+LE_2 = \frac{∂L}{∂r_1}-\frac{d}{dt}(\frac{∂L}{∂\dot{r}_1})=0
+\end{align}
+$$
+$$
+\begin{align}
+\tag{10}
+LE_3 = \frac{∂L}{∂θ_2}-\frac{d}{dt}(\frac{∂L}{∂\dot{θ}_2})=0
+\end{align}
+$$
 
-##### ∂L
-
-```
-∂θ 1
-```
-##### −
-
-```
-d
-dt
-```
-```
-(
-∂L
-∂θ ̇ 1
-```
-```
-)
-(8)
-```
-##### 5
-
-
-##### LE 2 =
-
-##### ∂L
-
-```
-∂r 1
-```
-##### −
-
-```
-d
-dt
-```
-```
-(
-∂L
-∂r ̇ 1
-```
-```
-)
-(9)
-```
-##### LE 3 =
-
-##### ∂L
-
-```
-∂θ 2
-```
-##### −
-
-```
-d
-dt
-```
-```
-(
-∂L
-∂θ ̇ 2
-```
-```
-)
-(10)
-```
 simplifying the above three equations, we will get second-order differential equations and
 convert them to explicit form for _θ_ ̈ 1 , _r_ ̈ 1 and _θ_ ̈ 2. Note that these equations are highly complicated
 and simplified using theSymPymodule of python.
@@ -365,65 +270,41 @@ The differential equation formulated using the Lagrange equation in Section 4.1 
 order ODE. As Runge-Kutta can only solve first-order ODE and reduce the solving steps in
 other algorithms, each equation is transformed into first-order equations.
 
-```
-θ ̈ 1 → dω^1
-dt
-```
-```
-= θ ̈ 1 ;
-```
-```
-dθ 1
-dt
-```
-```
-= ω 1 (11)
-```
-```
-r ̈ 1 →
-```
-```
-dv 1
-dt
-```
-```
-= ̈ r 1 ;
-```
-```
-dr 1
-dt
-```
-```
-= v 1 (12)
-```
-```
-θ ̈ 2 → dω^2
-dt
-```
-```
-= θ ̈ 2 ;
-```
-```
-dθ 2
-dt
-```
-```
-= ω 2 (13)
-```
+$$
+\begin{align}
+\tag{11}
+\ddot{θ}_1 → \frac{dω_1}{dt}= \ddot{θ}_1 ; \frac{dθ_1}{dt}=ω_1
+\end{align}
+$$
+
+$$
+\begin{align}
+\tag{12}
+\ddot{r}_1 → \frac{dv_1}{dt}= \ddot{r}_1 ; \frac{dr_1}{dt}=v_1
+\end{align}
+$$
+
+$$
+\begin{align}
+\tag{13}
+\ddot{θ}_2 → \frac{dω_2}{dt}= \ddot{θ}_2 ; \frac{dθ_2}{dt}=ω_2
+\end{align}
+$$
+
 #### 4.2.1 Forward Euler Method
 
 The Forward Euler or explicit method is the simplest method to solve an IVP. It uses the slope
 or derivative of the solution to find the approximate solution of the next step. The general
 formula for the explicit method is :
 
-```
-yi +1= yi + hf ( xi,yi ) ,wheref ( xi,yi ) =
-```
-```
-dyi
-dxi
-```
-##### (14)
+$$
+\begin{align}
+\tag{14}
+yi +1= yi + hf ( xi,yi ), where f( xi,yi )= \frac{dy_i}{dx_i}
+\end{align}
+$$
+
+
 
 The forward Euler is a first-order method, so the Local Truncation Error of Euler’s method
 is _O_ ( _h_^2 ), which means that the error in the approximation at each time step is proportional
@@ -431,7 +312,7 @@ to _h_^2 .Predictor-corrector methods are a class of numerical methods for solvi
 ential equations (ODEs) that use a two-step process to improve the accuracy of the approxi-
 mation.
 
-##### 6
+
 
 
 #### 4.2.2 Predictor-corrector method-Modified Euler Method
@@ -442,26 +323,33 @@ the forward Euler as a predictor and the backward Euler method as a corrector. T
 Euler will give a predicted value that is used as input for the backward to calculate the cor-
 rected value. The approximated value is then calculated as the average of the corrected and
 predicted values. The generalized equation of modified Euler is :
+$$
+\begin{align}
+\tag{15}
+Predictor : y^P_i +_1 = y_i +hf(x_i,y_i)
+\end{align}
+$$
 
-```
-Predictor : yPi +1= yi + hf ( xi,yi ) (15)
-```
-```
-Corrector : yiC +1= yi + hf ( xi +1 ,yPi +1) (16)
-```
-```
-Approximated : yi +1=
-```
-##### 1
+$$
+\begin{align}
+\tag{16}
+Corrector : y^C_i +_1 = y_i +hf(x_i+_1,y^P_i+_1)
+\end{align}
+$$
 
-##### 2
+$$
+\begin{align}
+\tag{17}
+Approximated : y_i +_1 = \frac{1}{2}(y^P_i+_1 + y^C_i +_1)
+\end{align}
+$$
 
-```
-( yPi +1+ yCi +1) (17)
-```
-where _h_ is the step-size, _f_ ( _xi,yi_ ) = _dydxii_ and _xi_ +1= _xi_ + 1
+
+
+
+where $h$ is the step-size, $f(x_i,y_i)= \frac{dy_i}{dx_i}$ and $ x_i+ _1= x_i + 1$
 The modified Euler is a second-order predictor-corrector method, thus the Local Truncation
-Error of Euler’s method is _O_ ( _h_^3 )
+Error of Euler’s method is $O(h^3)$
 
 #### 4.2.3 Runge-Kutta Method
 
@@ -470,83 +358,56 @@ method that is used to solve ordinary differential equations. This method works 
 imating the solution to an initial value problem by using a weighted average of estimates of
 derivatives of four points within the interval of integration. The four estimates are :
 
-```
-k 1 = f ( xi,yi ) ,wheref ( xi,yi ) =
-```
-```
-dyi
-dxi
-```
-##### (18)
+$$
+\begin{align}
+\tag{18} 
+k_1 = f(x_i,y_i), where f(x_i,y_i)= \frac{dy_i}{dx_i}
+\end{align}
+$$
 
-```
-k 2 = f ( xi +
-```
-```
-h
-2
-```
-```
-,yi +
-```
-```
-k 1
-2
-```
-##### ) (19)
+$$
+\begin{align}
+\tag{19} 
+k_2 = f(x_i+\frac{h}{2},y_i+\frac{k_1}{2})
+\end{align}
+$$
 
-```
-k 3 = f ( xi +
-```
-```
-h
-2
-```
-```
-,yi +
-```
-```
-k 2
-2
-```
-##### ) (20)
+$$
+\begin{align}
+\tag{20} 
+k_3 = f(x_i+\frac{h}{2},y_i+\frac{k_2}{2})
+\end{align}
+$$
 
-```
-k 4 = f ( xi + h,yi + k 3 ) (21)
-```
-```
-yi +1= yi +
-```
-```
-h
-6
-```
-```
-( k 1 + 2 k 2 + 2 k 3 + k 4 ) (22)
-```
-where h is the step size.
+$$
+\begin{align}
+\tag{21} 
+k_4 = f(x_i+h,y_i+k_3)
+\end{align}
+$$
+
+$$
+\begin{align}
+\tag{22} 
+y_i+_1 = y_i +\frac{h}{6}(k_1+2k_2+2l_3+k_4)
+\end{align}
+$$
+
+where $h$ is the step size.
 The Runge-Kutta method(RK4) is highly accurate. It is a fourth-order method and the
-Local Truncation Error is _O_ ( _h_^5 ), which means that it has an error term that is proportional
-to _h_^5 , where h is the step size.
-
-##### 7
+Local Truncation Error is $O(h^5)$, which means that it has an error term that is proportional
+to $h^5$ , where $h$ is the step size.
 
 
-## 5 Initialisation and Implementation of Numerical Solv-
 
-## ing Algorithms on Python
 
-The programming codes to implement the methodology discussed in the previous section
-are implemented through Python language. The major Python library modules used in this
-simulation areNumPy, SymPy,andMatplotlib.NumPyis a library that provides support
-for large, multi-dimensional arrays and matrices.SymPyis a library for symbolic mathematics,
-and it allows us to perform symbolic calculations in Python. Matplotlibis a library for
-creating visualizations in Python. Complete source code is shown in Appendix 8
+## 5 Initialisation and Implementation of Numerical Solving Algorithms on Python
+
+The programming codes to implement the methodology discussed in the previous section are implemented through Python language. The major Python library modules used in this simulation areNumPy, SymPy,andMatplotlib.NumPyis a library that provides support for large, multi-dimensional arrays and matrices.SymPyis a library for symbolic mathematics, and it allows us to perform symbolic calculations in Python. Matplotlibis a library for creating visualizations in Python. Complete source code is shown in Appendix 8
 
 ### 5.1 Declaration of variables as Function
 
-To develop the Lagrange equation in equation 8,9 and 10, we need to declare all the variables as
-functions.sympymodule is used. The python source code for the declaration of the following:
+To develop the Lagrange equation in equation 8,9 and 10, we need to declare all the variables as  functions.sympymodule is used. The python source code for the declaration of the following:
 
 # define variables constant variables
 t,m1,l1,m2,l2,g,k = smp.symbols(’t m_1 l_1 m_2 l_2 g k’)
@@ -580,10 +441,6 @@ y2 = y2(theta1,r1,theta2)
 
 # define coordinates of the mass
 x1= (l1+r1)*smp.cos(theta1)
-
-##### 8
-
-
 y1= -(l1+r1)*smp.sin(theta1)
 x2= x1 + l2*smp.cos(theta2)
 y2= y1 - l2*smp.sin(theta2)
@@ -633,10 +490,6 @@ dtheta2dt_f = smp.lambdify(theta2_d,theta2_d,modules=[’numpy’])
 
 # create a function to calculate the total energy
 E = T+V
-
-##### 9
-
-
 E = E.simplify()
 Energy= smp.lambdify((k,g,m1,l1,m2,l2,theta1,theta1_d,r1,r1_d,theta2,theta2_d)\
 ,E,modules=[’numpy’])
@@ -684,7 +537,7 @@ simulation_time = 10 # simulation time in seconds
 grids = int(simulation_time/h)
 grid_points = np.linspace(0,simulation_time,grids)
 
-##### 10
+
 
 
 y0 = np.array([theta1_0,theta1_d_0,r1_0,r1_d_0,theta2_0,theta2_d_0])
@@ -736,7 +589,7 @@ as follows :
 ## Numeric Solvers
 for i in range(1,len(grid_points)):
 
-##### 11
+
 
 
 ```
@@ -763,7 +616,7 @@ return ((l1+r1)*np.cos(theta1),
 (l1+r1)*np.cos(theta1)+l2*np.cos(theta2),
 -(l1+r1)*np.sin(theta1)-l2*np.sin(theta2),
 
-##### )
+
 
 x1, y1, x2, y2 = get_coord(l1,l2,ans.T[0], ans.T[2], ans.T[4])
 
@@ -823,7 +676,7 @@ figure3 = plt.show()
 print(’maximum error =’)
 print(float(max(abs(delta_TE))))
 
-##### 13
+
 
 
 ## 6 Results
@@ -842,13 +695,19 @@ In forward Euler, simulation with step size _h_ = 0_._ 01 and 0_._ 001 didn’t 
 lation failed in between. Thus only _h_ = 0_._ 0001 and 0_._ 00001 has an output. The trajectories
 for the same are shown below
 
-Figure 2: Results of forward Euler method with h= 0.0001 (total en-
-ergy(left),error(middle),and trajectory(right))
+<img src="./Images/eulerplot/0.0001/Total_Energy_Forwardr0.0001.png" width="200" height="200">
+<img src="./Images/eulerplot/0.0001/Delta_Energy_Forward0.0001.png" width="200" height="200">
+<img src="./Images/eulerplot/0.0001/final_frame_Forward0.0001.png" width="200" height="200">
 
+Figure 2: Results of forward Euler method with h= 0.0001 (total en-
+ergy(left),error(middle),and trajectory(right))\
+<img src="./Images/eulerplot/0.00001/Total_Energy_Forwardr0.00001.png" width="200" height="200">
+<img src="./Images/eulerplot/0.00001/Delta_Energy_Forward0.00001.png" width="200" height="200">
+<img src="./Images/eulerplot/0.00001/final_frame_Forward0.00001.png" width="200" height="200">\
 Figure 3: Results of forward Euler method with h= 0.00001 (total en-
 ergy(left),error(middle),and trajectory(right))
 
-##### 14
+
 
 
 The figure above illustrates all of the results that were achieved during the simulation with
@@ -862,19 +721,31 @@ solve the system efficiently.
 
 The Predictor-Corrector Method with _O_ ( _h_^3 )is also an explicit method. Moreover, it is ex-
 pected to converge with the smaller step size. Therefore, the system is simulated with step
-size h = 0.01, 0.001, 0.0001, and 0.00001 and are illustrated below.
+size h = 0.01, 0.001, 0.0001, and 0.00001 and are illustrated below.\
+<img src="./Images/predictorplot/0.01/Total_Energy_Predictor0.01.png" width = 200 height = 200 >
+<img src="./Images/predictorplot/0.01/Delta_Energy_Predictor0.01.png" width = 200 height = 200>
+<img src="./Images/predictorplot/0.01/final_frame_jPredictor0.01.png" width = 200 height = 200> 
 
 Figure 4: Results of Predictor-Corrector with h= 0.01 (total energy(left),error(middle),and
 trajectory(right))
+<img src="./Images/predictorplot/0.001/Total_Energy_Predictor0.001.png" width = 200 height = 200 >
+<img src="./Images/predictorplot/0.001/Delta_Energy_Predictor0.001.png" width = 200 height = 200>
+<img src="./Images/predictorplot/0.001/final_frame_jPredictor0.001.png" width = 200 height = 200> 
 
-Figure 5: Results of Predictor-Corrector with h= 0.001 (total energy(left),error(middle),and
-trajectory(right))
+ 
+Figure 5: Results of Predictor-Corrector with h= 0.001 (total energy(left),error(middle),and trajectory(right))\
 
-##### 15
+<img src="./Images/predictorplot/0.0001/Total_Energy_Predictor0.0001.png" width ="200" height = "200">
+<img src="./Images/predictorplot/0.0001/Delta_Energy_Predictor0.0001.png" width = "200" height = "200">
+<img src="./Images/predictorplot/0.0001/final_frame_jPredictor0.0001.png" width = "200" height= "200">
 
 
 Figure 6: Results of Predictor-Corrector with h= 0.0001 (total energy(left),error(middle),and
 trajectory(right))
+
+<img src="./Images/predictorplot/0.00001/Total_Energy_Predictor0.00001.png" width = 200 height = 200 >
+<img src="./Images/predictorplot/0.00001/Delta_Energy_Predictor0.00001.png" width = 200 height = 200>
+<img src="./Images/predictorplot/0.00001/final_frame_jpredictorr0.00001.png" width = 200 height = 200> 
 
 Figure 7: Results of Predictor-Corrector with h= 0.00001 (total energy(left),error(middle),and
 trajectory(right))
@@ -890,22 +761,26 @@ much higher than that of the lower step size.
 The previous numerical solver was able to solve the system with an error of less than 106.
 However, the classical Runge-kutta method is a relatively faster and more advanced numerical
 solving method with the local error of _O_ ( _h_^5 ). Therefore, we simulated the system with a
-similar step size, and the results are shown below.
-
-##### 16
-
+similar step size, and the results are shown below.\
+<img src="./Images/rk4plot/0.01/Total_Energy_RKr0.01.png" width = 200 height = 200 >
+<img src="./Images/rk4plot/0.01/Delta_Energy_RK0.01.png" width = 200 height = 200>
+<img src="./Images/rk4plot/0.01/final_frame_RK0.01.png" width = 200 height = 200> 
 
 Figure 8: Results of RK4 with h= 0.01 (total energy(left),error(middle),and trajectory(right))
-
+<img src="./Images/rk4plot/0.001/Total_Energy_RKr0.001.png" width = 200 height = 200 >
+<img src="./Images/rk4plot/0.001/Delta_Energy_RK0.001.png" width = 200 height = 200>
+<img src="./Images/rk4plot/0.001/final_frame_RK0.001.png" width = 200 height = 200> 
 Figure 9: Results of RK4 with h= 0.001 (total energy(left),error(middle),and trajectory(right))
-
-##### .
-
-##### 17
-
+<img src="./Images/rk4plot/0.0001/Total_Energy_RKr0.0001.png" width = 200 height = 200 >
+<img src="./Images/rk4plot/0.0001/Delta_Energy_RK0.0001.png" width = 200 height = 200>
+<img src="./Images/rk4plot/0.0001/final_frame_RK0.0001.png" width = 200 height = 200> 
 
 Figure 10: Results of RK4 with h= 0.0001 (total energy(left),error(middle),and trajec-
 tory(right))
+
+<img src="./Images/rk4plot/0.00001/Total_Energy_RKr0.00001.png" width = 200 height = 200 >
+<img src="./Images/rk4plot/0.00001/Delta_Energy_RK0.00001.png" width = 200 height = 200>
+<img src="./Images/rk4plot/0.00001/final_frame_RK0.00001.png" width = 200 height = 200> 
 
 Figure 11: Results of RK4 with h= 0.0001 (total energy(left),error(middle),and trajec-
 tory(right))
@@ -915,7 +790,7 @@ identical in all values of _h_. The error variation between each step size has b
 other figures. The interpretation of the error changes from a scale of 10 −^4 to 10 −^11. Figure 10
 and 11 have a minute error difference, both are in the scale of 10 −^11
 
-##### 18
+
 
 
 ## 7 Discussion and conclusion
@@ -925,16 +800,16 @@ trajectory decreases, and thus error also decreases To show the error difference
 method, the max error from each method for each h value has been taken and a graph is
 plotted with max error vs h for all three algorithms.
 
-```
+<img src="./Images/graph.png">
 Figure 12: Maximum absolute difference against the exact solution of different solver
-```
+
 As we can see in the above graph Rung-Kutta method which is an order 4 algorithm
 resulted in low error followed by the predictor-corrector method (order 2) and the forward
 Euler method(order1). It is to be noted that there is a slight increase in the error in RK4, but
 it is almost negligible as the increase is too low. Thus it is to be concluded that the error of
 a Numerical simulation depends on the order of solving algorithm and step size.
 
-##### 19
+
 
 
 ## References
