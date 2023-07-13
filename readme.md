@@ -50,26 +50,18 @@
 ## List of Figures
 
 
-1 Coordinate System................................. 4
-2 Results of forward Euler method with h= 0.0001 (total energy(left),error(middle),and
-trajectory(right)).................................. 14
-3 Results of forward Euler method with h= 0.00001 (total energy(left),error(middle),and
-trajectory(right)).................................. 14
-4 Results of Predictor-Corrector with h= 0.01 (total energy(left),error(middle),and
-trajectory(right)).................................. 15
-5 Results of Predictor-Corrector with h= 0.001 (total energy(left),error(middle),and
-trajectory(right)).................................. 15
-6 Results of Predictor-Corrector with h= 0.0001 (total energy(left),error(middle),and
-trajectory(right)).................................. 16
-7 Results of Predictor-Corrector with h= 0.00001 (total energy(left),error(middle),and
-trajectory(right)).................................. 16
-8 Results of RK4 with h= 0.01 (total energy(left),error(middle),and trajectory(right)) 17
-9 Results of RK4 with h= 0.001 (total energy(left),error(middle),and trajectory(right)) 17
-10 Results of RK4 with h= 0.0001 (total energy(left),error(middle),and trajec-
-tory(right))..................................... 18
-11 Results of RK4 with h= 0.0001 (total energy(left),error(middle),and trajec-
-tory(right))..................................... 18
-12 Maximum absolute difference against the exact solution of different solver... 19
+1 Coordinate System\
+2 Results of forward Euler method with h= 0.0001 (total energy(left),error(middle),and trajectory(right))\
+3 Results of forward Euler method with h= 0.00001 (total energy(left),error(middle),and trajectory(right))\
+4 Results of Predictor-Corrector with h= 0.01 (total energy(left),error(middle),and trajectory(right))\
+5 Results of Predictor-Corrector with h= 0.001 (total energy(left),error(middle),and trajectory(right))\
+6 Results of Predictor-Corrector with h= 0.0001 (total energy(left),error(middle),and trajectory(right))\
+7 Results of Predictor-Corrector with h= 0.00001 (total energy(left),error(middle),and trajectory(right))\
+8 Results of RK4 with h= 0.01 (total energy(left),error(middle),and trajectory(right))\
+9 Results of RK4 with h= 0.001 (total energy(left),error(middle),and trajectory(right))\
+10 Results of RK4 with h= 0.0001 (total energy(left),error(middle),and trajec-tory(right))\
+11 Results of RK4 with h= 0.0001 (total energy(left),error(middle),and trajec-tory(right))\
+12 Maximum absolute difference against the exact solution of different solver\
 
 
 
@@ -409,41 +401,35 @@ The programming codes to implement the methodology discussed in the previous sec
 
 To develop the Lagrange equation in equation 8,9 and 10, we need to declare all the variables as  functions.sympymodule is used. The python source code for the declaration of the following:
 
-# define variables constant variables
-t,m1,l1,m2,l2,g,k = smp.symbols(’t m_1 l_1 m_2 l_2 g k’)
-
-# define changing variables (degree of freedom)
-theta1,theta2,r1 = smp.symbols(’theta_1, theta_2, r_1’, cls = smp.Function)
-
+##### #define variables constant variables
+t,m1,l1,m2,l2,g,k = smp.symbols('t m_1 l_1 m_2 l_2 g k')
+##### #define changing variables (degree of freedom)
+theta1,theta2,r1 = smp.symbols('theta_1, theta_2, r_1', cls = smp.Function)
 #make them function of time
 theta1 = theta1(t)
 r1= r1(t)
 theta2= theta2(t)
-
 #define first derivative
 theta1_d = smp.diff(theta1,t)
 r1_d = smp.diff(r1,t)
 theta2_d = smp.diff(theta2,t)
-
-# define second derivative
+##### #define second derivative
 theta1_dd = smp.diff(theta1_d,t)
 r1_dd = smp.diff(r1_d,t)
 theta2_dd = smp.diff(theta2_d,t)
-
-# define coordniate variables
-x1,y1,x2,y2= smp.symbols(’x_1,y_1,x_2,y_2’, cls = smp.Function)
-
-# make them function of respective variables
+##### #define coordniate variables
+x1,y1,x2,y2= smp.symbols('x_1,y_1,x_2,y_2', cls = smp.Function)
+##### #make them function of respective variables
 x1 = x1(theta1)
 y1 = y1(theta1)
 x2 = x2(theta1,r1,theta2)
 y2 = y2(theta1,r1,theta2)
-
-# define coordinates of the mass
+##### #define coordinates of the mass
 x1= (l1+r1)*smp.cos(theta1)
 y1= -(l1+r1)*smp.sin(theta1)
 x2= x1 + l2*smp.cos(theta2)
 y2= y1 - l2*smp.sin(theta2)
+
 
 ### 5.2 Formulation of Lagrange equation
 
