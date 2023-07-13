@@ -450,13 +450,16 @@ y2= y1 - l2*smp.sin(theta2)
 For the formulation of the Lagrange equation (equation 8,9 and 10)sympymodule is used.
 The python source code for the formulation of the Lagrange equation is as follows :
 
-# define the equation of the Potential, Keinetic Energy and Lagrangian
+```
+#define the equation of the Potential, Keinetic Energy and Lagrangian
 T= 1/2 *m1* (smp.diff(x1,t)**2 + smp.diff(y1,t)**2)+\
 1/2 *m2* (smp.diff(x2,t)**2 + smp.diff(y2,t)**2)
 V = (m1*g*y1) + (m2*g*y2) + 1/2 * k * r1** 2
 L= T-V
+```
 
-# calculate Lagrangian’s equation and solve for equation
+```
+#calculate Lagrangian’s equation and solve for equation
 #of motion of the system
 LE1 = smp.diff(L, theta1) - smp.diff(smp.diff(L, theta1_d), t)
 LE1 = LE1.simplify()
@@ -469,13 +472,12 @@ LE3 = LE3.simplify()
 
 sols = smp.solve([LE1,LE2,LE3],(theta1_dd,r1_dd,theta2_dd),\
 simplify=True, rational = True)
+```
 
-As Runge-Kutta method can only solve first-order ODE and to reduce the solving steps in
-other methods the equations are transformed into first-order as shown in equation 11,12 and
+As Runge-Kutta method can only solve first-order ODE and to reduce the solving steps in other methods the equations are transformed into first-order as shown in equation 11,12 and 13. The python code for the same is as follows :
 
-13. The python code for the same is as follows :
-
-## reduction of 2nd order to 1st order ODE
+```
+#reduction of 2nd order to 1st order ODE
 dw1dt_f = smp.lambdify((k,g,m1,l1,m2,l2,theta1,theta1_d,r1,r1_d,theta2,theta2_d),\
 sols[theta1_dd],modules=[’numpy’])
 dtheta1dt_f = smp.lambdify(theta1_d,theta1_d,modules=[’numpy’])
@@ -487,14 +489,18 @@ dr1dt_f = smp.lambdify(r1_d,r1_d,modules=[’numpy’])
 dw2dt_f = smp.lambdify((k,g,m1,l1,m2,l2,theta1,theta1_d,r1,r1_d,theta2,theta2_d),\
 sols[theta2_dd],modules=[’numpy’])
 dtheta2dt_f = smp.lambdify(theta2_d,theta2_d,modules=[’numpy’])
+```
 
-# create a function to calculate the total energy
+```
+#create a function to calculate the total energy
 E = T+V
 E = E.simplify()
 Energy= smp.lambdify((k,g,m1,l1,m2,l2,theta1,theta1_d,r1,r1_d,theta2,theta2_d)\
 ,E,modules=[’numpy’])
+```
 
-# assemble all of the equations in one function
+```
+#assemble all of the equations in one function
 
 def system(variables, t):
 theta1,w1,r1,v1,theta2,w2 = variables
@@ -506,14 +512,15 @@ dv1dt_f(k,g,m1,l1,m2,l2,theta1,w1,r1,v1,theta2,w2),
 dtheta2dt_f(w2),
 dw2dt_f(k,g,m1,l1,m2,l2,theta1,w1,r1,v1,theta2,w2)
 ]
-
+```
 Note that the total energy is calculated to plot the total energy graph.
 
 ### 5.3 Defining System Parameters, Initial Conditions and Numeric solution parameters
 
 The assumed System parameters and initial conditions are as follows :
 
-## define the System parameters
+```
+# define the System parameters
 g=9.
 k=
 m1=
@@ -527,24 +534,23 @@ r1_0 = 0
 r1_d_0 = 0
 theta2_0 = 5*np.pi/
 theta2_d_0 = 0
+```
 
 The Numerical Solution parameters include step sizehwhich will be changed in multiple
 simulations. The source code for the same is :
 
-##Numeric Solution parameters
+```
+#Numeric Solution parameters
 h= 0.001 # step size
 simulation_time = 10 # simulation time in seconds
 grids = int(simulation_time/h)
 grid_points = np.linspace(0,simulation_time,grids)
 
-
-
-
 y0 = np.array([theta1_0,theta1_d_0,r1_0,r1_d_0,theta2_0,theta2_d_0])
 ans = np.zeros((len(grid_points),6)) #
 ans[0]=y
-t=
-
+t=0
+```
 ### 5.4 Numeric Solver Algorithm
 
 Three algorithms are used in this simulation project: Forward Euler, Predictor-Corrector, and
@@ -555,30 +561,31 @@ method will be active, other methods will be put onCommentinside theforloop.
 
 The source code of the forward Euler according to the equation 14 as follows
 
-## Numeric Solvers
+```
+# Numeric Solvers
 for i in range(1,len(grid_points)):
 
-```
 # Forward Euler method
-y0=list(np.array(y0))+(np.array(system(ans[i-1],t))*h)
-```
-```
-ans[i]= y
-t=t+h
+   y0=list(np.array(y0))+(np.array(system(ans[i-1],t))*h)
+
+   ans[i]= y
+   t=t+h
 ```
 #### 5.4.2 Predictor Corrector Method
 
 The modified Euler method is the predictor-corrector method used in this project. The python
 code for the same are follows(equation 15,16 and 17)
 
+```
 ## Numeric Solvers
 for i in range(1,len(grid_points)):
 # Predictor Corrector Method
-predict=list(np.array(y0))+(np.array(system(ans[i-1],t))*h)
-correct = list(np.array(y0))+(np.array(system(predict,t))*h)
-y0= (predict+correct)/
-ans[i]= y
-t=t+h
+   predict=list(np.array(y0))+(np.array(system(ans[i-1],t))*h)
+   correct = list(np.array(y0))+(np.array(system(predict,t))*h)
+   y0= (predict+correct)/
+   ans[i]= y
+   t=t+h
+```
 
 #### 5.4.3 Runge-Kutta Method(RK-4)
 
@@ -586,21 +593,18 @@ The fourth order Runge-Kutta method is the most accurate algorithm used in this 
 The source code to implement this algorithm with respect to equation 18,19,20,21 and 22 is
 as follows :
 
+```
 ## Numeric Solvers
 for i in range(1,len(grid_points)):
 
-
-
-
-```
 # Runge-Kutta method
-k1 = system(y0,t)
-k2=system(list(np.array(y0)+(np.array(k1)*h/2)),t+h/2)
-k3=system(list(np.array(y0)+(np.array(k2)*h/2)),t+h/2)
-k4=system(list(np.array(y0)+(np.array(k3)*h)),t+h)
-y0=list(np.array(y0)+((np.array(k1)+np.array(k2)*2+np.array(k3)*2+np.array(k4)))*h/6)
-ans[i]= y
-t=t+h
+   k1 = system(y0,t)
+   k2=system(list(np.array(y0)+(np.array(k1)*h/2)),t+h/2)
+   k3=system(list(np.array(y0)+(np.array(k2)*h/2)),t+h/2)
+   k4=system(list(np.array(y0)+(np.array(k3)*h)),t+h)
+   y0=list(np.array(y0)+((np.array(k1)+np.array(k2)*2+np.array(k3)*2+np.array(k4)))*h/6)
+   ans[i]= y
+   t=t+h
 ```
 ### 5.5 Plotting
 
@@ -609,13 +613,13 @@ are plotted asFigure 1 and animated, which saves into a .gif file. The total ene
 total energy difference from one step to another are also plotted asfigure 2andfigure
 3 respectively. Following are the source codes :
 
-### plotting
+```
+# plotting
 def get_coord(l1,l2,theta1 , r1, theta2):
-return ((l1+r1)*np.cos(theta1),
--(l1+r1)*np.sin(theta1),
-(l1+r1)*np.cos(theta1)+l2*np.cos(theta2),
--(l1+r1)*np.sin(theta1)-l2*np.sin(theta2),
-
+   return ((l1+r1)*np.cos(theta1),
+   -(l1+r1)*np.sin(theta1),
+   (l1+r1)*np.cos(theta1)+l2*np.cos(theta2),
+   -(l1+r1)*np.sin(theta1)-l2*np.sin(theta2)),
 
 
 x1, y1, x2, y2 = get_coord(l1,l2,ans.T[0], ans.T[2], ans.T[4])
@@ -626,24 +630,17 @@ trajectory_x2=[]
 trajectory_y2=[]
 
 def animate(i):
-i= i * int(grids/(simulation_time*50))
+   i= i * int(grids/(simulation_time*50))
+   ln1.set_data([0, x1[i]], [0, y1[i]])
+   ln2.set_data([x1[i], x2[i]], [y1[i], y2[i]])
+   trajectory_x1.append(x1[i])
+   trajectory_y1.append(y1[i])
+   trajectory_x2.append(x2[i])
+   trajectory_y2.append(y2[i])
+   trajectory1.set_data(trajectory_x1,trajectory_y1)
+   trajectory2.set_data(trajectory_x2,trajectory_y2)
+   return ln1,ln2,trajectory1,trajectory
 
-```
-ln1.set_data([0, x1[i]], [0, y1[i]])
-ln2.set_data([x1[i], x2[i]], [y1[i], y2[i]])
-trajectory_x1.append(x1[i])
-trajectory_y1.append(y1[i])
-trajectory_x2.append(x2[i])
-trajectory_y2.append(y2[i])
-trajectory1.set_data(trajectory_x1,trajectory_y1)
-```
-##### 12
-
-
-```
-trajectory2.set_data(trajectory_x2,trajectory_y2)
-return ln1,ln2,trajectory1,trajectory
-```
 fig, ax = plt.subplots(1,1, figsize=(8,8))
 ax.grid()
 ln1, = plt.plot([], [], ’ro--’, lw=3, markersize=1)
@@ -675,6 +672,7 @@ figure3 = plt.show()
 
 print(’maximum error =’)
 print(float(max(abs(delta_TE))))
+```
 
 
 
@@ -769,7 +767,7 @@ similar step size, and the results are shown below.\
 Figure 8: Results of RK4 with h= 0.01 (total energy(left),error(middle),and trajectory(right))
 <img src="./Images/rk4plot/0.001/Total_Energy_RKr0.001.png" width = 200 height = 200 >
 <img src="./Images/rk4plot/0.001/Delta_Energy_RK0.001.png" width = 200 height = 200>
-<img src="./Images/rk4plot/0.001/final_frame_RK0.001.png" width = 200 height = 200> 
+<img src="./Images/rk4plot/0.001/final_frame_RK0.001.png" width = 200 height = 200> \
 Figure 9: Results of RK4 with h= 0.001 (total energy(left),error(middle),and trajectory(right))
 <img src="./Images/rk4plot/0.0001/Total_Energy_RKr0.0001.png" width = 200 height = 200 >
 <img src="./Images/rk4plot/0.0001/Delta_Energy_RK0.0001.png" width = 200 height = 200>
