@@ -1,3 +1,4 @@
+![](./Images/hsrw-logo-transparent.png)
 ### Faculty of Technology and Bionics
 
 Numerical Methods of Simulations
