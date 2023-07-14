@@ -1,10 +1,4 @@
-![](./Images/hsrw-logo-transparent.png)
-### Faculty of Technology and Bionics
 
-## Numerical Methods of Simulations
-
-### winter term 2022/23
-### Project Report
 
 ## Numerical Solution of a double pendulum with one member as spring using Lagrangian Mechanics
 
