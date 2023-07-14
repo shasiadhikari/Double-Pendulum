@@ -1,20 +1,7 @@
-![](./Images/hsrw-logo-transparent.png)
-### Faculty of Technology and Bionics
 
-## Numerical Methods of Simulations
 
-### winter term 2022/23
-### Project Report
+## Numerical Solution of a double pendulum with one member as spring using Lagrangian Mechanics
 
-## Numerical Solution of double pendulum with one
-
-## member as spring using Lagrangian Mechanics
-
-### Akhil Binoy : 31003
-
-### Shasi Adhikari: 20794
-
-### 28 th February, 2023
 ![](./Images/spring_pendulum.gif)
 
 ## Contents
@@ -42,9 +29,6 @@
    - 6.2 Predictor-Corrector Method
    - 6.3 Runge-Kutta method
 - 7 Discussion and conclusion
-- 8 Apendix A
-- 9 Appendix B
-         -
 
 
 ## List of Figures
