@@ -35,9 +35,6 @@
    - 6.2 Predictor-Corrector Method
    - 6.3 Runge-Kutta method
 - 7 Discussion and conclusion
-- 8 Apendix A
-- 9 Appendix B
-         -
 
 
 ## List of Figures
