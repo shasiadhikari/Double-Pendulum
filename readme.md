@@ -6,15 +6,8 @@
 ### winter term 2022/23
 ### Project Report
 
-## Numerical Solution of double pendulum with one
+## Numerical Solution of a double pendulum with one member as spring using Lagrangian Mechanics
 
-## member as spring using Lagrangian Mechanics
-
-### Akhil Binoy : 31003
-
-### Shasi Adhikari: 20794
-
-### 28 th February, 2023
 ![](./Images/spring_pendulum.gif)
 
 ## Contents
